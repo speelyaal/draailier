@@ -1,0 +1,58 @@
+.side-bar-container {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.bg-image {
+  background-image: url("../../../assets/Rectangle_bg.svg");
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+
+#side-bar {
+  max-width: 160px;
+  min-width: 160px;
+}
+
+.cloud-src {
+  text-align: center;
+  padding: 10px;
+  margin: 0px 2px 10px 2px;
+}
+
+.cloud-src-link {
+  font-family: Arial;
+  font-size: 20px;
+  color: #dadada;
+  text-decoration: none;
+}
+
+.active-cloud-src {
+  // width: 161px;
+  // height: 53px;
+  // font-family: Arial;
+  font-size: 24px;
+  color: #e8e8e8;
+  text-decoration: none solid rgb(232, 232, 232);
+  text-align: center;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.29), 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#side-bar ul {
+  padding-top: 10px;
+}
+
+#side-bar ul li:hover {
+  background-image: url("../../../assets/focus_rectangle.svg");
+  background-size: 100% 100%;
+}
+
+#side-bar ul li:active {
+  background-image: unset;
+  font-size: 24px;
+  color: #e8e8e8;
+  text-decoration: none solid rgb(232, 232, 232);
+  text-align: center;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.29), 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
