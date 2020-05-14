@@ -1,0 +1,29 @@
+draailierType: VirtualMachine
+getAll:
+  method: GET
+  path: /linode/instances
+getByReference:
+  method: GET
+  path: /linode/instances/{reference}
+create:
+  method: POST
+  path: /linode/instances
+  body:
+    label: name
+    type: vmTypeIdentifier
+    region: vmLocationIdentifier
+    image: osImageIdentifier
+    root_pass: rootPassword
+    #ssh_keys: sshKeys:vendorReference
+update:
+  method: PUT
+  path: /linode/instances/{reference}
+delete:
+  method: DELETE
+  path: /linode/instances/{reference}
+
+
+
+
+
+

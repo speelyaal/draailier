@@ -1,0 +1,11 @@
+draailierType: Location
+getAll:
+  method: GET
+  path: /locations
+getByReference:
+  method: GET
+  path: /locations/{reference}
+
+
+
+

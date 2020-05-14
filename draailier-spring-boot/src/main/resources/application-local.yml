@@ -1,0 +1,14 @@
+server:
+  port: 9002
+
+draailier:
+  mappersPath: /Users/ashok/SpeelYaal/Technology/Workspace/draailier/mappers
+  version: 1.0.23
+  providers:
+    - Hetzner
+    - Linode
+    #- digitalOcean
+    #- upCloud
+    #- aws
+    #- azure
+    #- googleCloud

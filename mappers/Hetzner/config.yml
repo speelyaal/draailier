@@ -1,0 +1,11 @@
+apiVersion: v1
+apiUrl: https://api.hetzner.cloud/v1
+authorizationType: bearerToken
+resources:
+  - Location
+  - VirtualMachineType
+  - OperatingSystemImage
+  - VirtualMachine
+  - SSHKey
+  - Network
+  - FloatingIP

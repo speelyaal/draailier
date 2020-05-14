@@ -1,0 +1,26 @@
+resources: 
+  - Location
+  - VirtualMachineType
+  - OperatingSystemImage
+  - VirtualMachine
+  - SSHKey
+  - Network
+  - FloatingIP
+
+resourcesMetadata: 
+  - properties: 
+      - Location:
+      - VirtualMachineType:
+      - OperatingSystemImage:
+      - VirtualMachine:
+        - name 
+        - vmTypeIdentifier 
+        - vmLocationIdentifier 
+        - osImageIdentifier 
+        - rootPassword
+      - SSHKey:
+        - publicKey
+      - Network:
+        - ipRange
+      - FloatingIP:
+        - ipLocationIdentifier
