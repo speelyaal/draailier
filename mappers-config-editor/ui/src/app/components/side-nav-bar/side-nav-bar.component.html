@@ -1,0 +1,13 @@
+<div class="side-bar-container">
+  <nav id="side-bar" class="bg-image">
+    <ul *ngFor="let source of cloudSources" class="list-unstyled">
+      <li class="cloud-src">
+          <a [routerLink]="['/config', source]" class="cloud-src-link" routerLinkActive="active-cloud-src">{{ source }}</a>
+      </li>
+    </ul>
+
+    <!-- <div *ngFor="let source of cloudSources" class="cloud-src">
+      {{ source }}
+    </div> -->
+  </nav>
+</div>
