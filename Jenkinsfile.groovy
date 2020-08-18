@@ -1,4 +1,4 @@
-def DRAAILIER_VERSION= ''
+def DRAAILIER_VERSION= '1.0.0'
 pipeline {
     agent any
     environment{
@@ -11,14 +11,16 @@ pipeline {
         stage("Compile") {
 
             steps {
-                script {
+              /*  script {
                     def version_value = sh(returnStdout: true, script: "cat draailier-spring-boot/build.gradle.kts | grep -o 'version = [^,]*'").trim()
                     sh "echo Project in version value: $version_value"
                     DRAAILIER_VERSION = version_value.split(/=/)[1].trim()
                     sh "echo ++++++++++++++++++++++++++++++++++++++++++++++++"
                     sh "echo final version: $DRAAILIER_VERSION"
                     sh 'cd draailier-spring-boot && chmod +x gradlew'
-                }
+                }*/
+
+                sh 'cd draailier-spring-boot && chmod +x gradlew'
                 //        sh "./gradlew compileKotlin"
             }
         }
