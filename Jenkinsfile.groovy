@@ -1,3 +1,4 @@
+def DRAAILIER_VERSION= ''
 pipeline {
     agent any
     environment{
@@ -10,6 +11,12 @@ pipeline {
         stage("Compile") {
 
             steps {
+                def version_value = sh(returnStdout: true, script: "cat draailier-spring-boot/build.gradle.kts | grep -o 'version = [^,]*'").trim()
+                sh "echo Project in version value: $version_value"
+                DRAAILIER_VERSION = version_value.split(/=/)[1].trim()
+                sh "echo ++++++++++++++++++++++++++++++++++++++++++++++++"
+                sh "echo final version: $DRAAILIER_VERSION"
+
                 sh 'cd draailier-spring-boot && chmod +x gradlew'
                 //        sh "./gradlew compileKotlin"
             }
@@ -28,9 +35,9 @@ pipeline {
 
 
 
-                sh "docker build -f Dockerfile -t speelyaal/draailier:0.1 ."
+                sh "docker build -f Dockerfile -t speelyaal/draailier:${DRAAILIER_VERSION} ."
                 sh "docker login -u ${DOCKER_HUB_USERNAME}  -p  ${DOCKER_HUB_PASSWORD}"
-                sh "docker push speelyaal/draailier:0.1"
+                sh "docker push speelyaal/draailier:${DRAAILIER_VERSION}"
             }
         }
 
