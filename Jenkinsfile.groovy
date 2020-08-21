@@ -6,6 +6,11 @@ pipeline {
         def DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
         def ENVIRONMENT_CODE= ''
     }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
+
     stages {
 
         stage("Compile") {
