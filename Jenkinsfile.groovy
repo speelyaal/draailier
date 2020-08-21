@@ -26,7 +26,7 @@ pipeline {
                     sh 'cd draailier-spring-boot && chmod +x gradlew'
                 }
 
-                sh 'cd draailier-spring-boot && chmod +x gradlew'
+                //sh 'cd draailier-spring-boot && chmod +x gradlew'
                 //        sh "./gradlew compileKotlin"
             }
         }
