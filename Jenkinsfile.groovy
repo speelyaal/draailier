@@ -17,7 +17,7 @@ pipeline {
 
             steps {
                 script {
-                    def version_value = sh(returnStdout: true, script: "cd draailier-spring-boot && cat build.gradle.kts | grep -o 'version = [^,]*'").trim()
+                    def version_value = sh(returnStdout: true, script: "cd draailier-spring-boot && cat build.gradle.kts | grep -m 1 -o 'version = [^,]*'").trim()
                      sh "echo Project in version value: $version_value"
                    // DRAAILIER_VERSION = '0.22'
                     DRAAILIER_VERSION = version_value.split(/=/)[1].trim()
