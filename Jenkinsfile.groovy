@@ -44,7 +44,7 @@ pipeline {
 
 
 
-                sh "docker build  -f Dockerfile --build-arg SERVICE_VERSION=${DRAAILIER_VERSION} -t speelyaal/draailier:${DRAAILIER_VERSION} ."
+                sh "docker build  -f Dockerfile  -t speelyaal/draailier:${DRAAILIER_VERSION} . --build-arg SERVICE_VERSION=${DRAAILIER_VERSION}"
                 sh "docker login -u ${DOCKER_HUB_USERNAME}  -p  ${DOCKER_HUB_PASSWORD}"
                 sh "docker push speelyaal/draailier:${DRAAILIER_VERSION}"
             }
