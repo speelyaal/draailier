@@ -21,7 +21,7 @@ pipeline {
                    // sh "echo Project in version value: $version_value"
                    // DRAAILIER_VERSION = '0.22'
                     DRAAILIER_VERSION = version_value.split(/=/)[1].trim()
-                    DRAAILIER_VERSION = DRAAILIER_VERSION.trim()
+                    DRAAILIER_VERSION = DRAAILIER_VERSION.replaceAll("[\n\r]", "");
                    // sh "echo ++++++++++++++++++++++++++++++++++++++++++++++++"
                    // sh "echo final version: $DRAAILIER_VERSION"
                     sh 'cd draailier-spring-boot && chmod +x gradlew'
@@ -44,7 +44,7 @@ pipeline {
 
 
 
-                sh "docker build  -f Dockerfile  -t speelyaal/draailier:${DRAAILIER_VERSION} . --build-arg SERVICE_VERSION=${DRAAILIER_VERSION}"
+                sh "docker build  -f Dockerfile --build-arg SERVICE_VERSION=${DRAAILIER_VERSION} -t speelyaal/draailier:${DRAAILIER_VERSION} ."
                 sh "docker login -u ${DOCKER_HUB_USERNAME}  -p  ${DOCKER_HUB_PASSWORD}"
                 sh "docker push speelyaal/draailier:${DRAAILIER_VERSION}"
             }
