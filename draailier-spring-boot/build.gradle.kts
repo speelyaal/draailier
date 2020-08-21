@@ -1,7 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-group = "com.speelyaal"
 version = "1.0.0"
+
+
+group = "com.speelyaal"
+
 plugins {
 	id("org.springframework.boot") version "2.3.0.M2"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
