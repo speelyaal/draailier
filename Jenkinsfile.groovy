@@ -23,11 +23,10 @@ pipeline {
                     DRAAILIER_VERSION = version_value.split(/=/)[1].trim()
                     sh "echo ++++++++++++++++++++++++++++++++++++++++++++++++"
                     sh "echo final version: $DRAAILIER_VERSION"
-                    //sh 'cd draailier-spring-boot && chmod +x gradlew'
+                    sh 'cd draailier-spring-boot && chmod +x gradlew'
                 }
 
-                sh 'cd draailier-spring-boot && chmod +x gradlew'
-                //        sh "./gradlew compileKotlin"
+                
             }
         }
        
