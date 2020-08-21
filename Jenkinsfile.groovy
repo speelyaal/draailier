@@ -1,4 +1,4 @@
-def DRAAILIER_VERSION= '1.0.0'
+def DRAAILIER_VERSION= '0.2'
 pipeline {
     agent any
     environment{
