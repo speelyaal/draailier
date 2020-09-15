@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: draailier-service
+  cloud:
+    kubernetes:
+      config:
+        name: draailier-service-config
+        sources:
+          - name: draailier-service-config
