@@ -9,7 +9,7 @@ mapping:
      #This Json Path is "within" the each individual resource object. Do not give Json Path from the root of the response.
 
      id: $.id
-     name: $.name
+     name: $.description
      vendorReference: $.name
      description: $.description
      cores: $.cores
