@@ -33,6 +33,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
 
+	//Kubernetes configuration
+	implementation(group="org.springframework.cloud", name="spring-cloud-starter-kubernetes-all", version="1.1.2.RELEASE")
+
+
+
 
 	//JSON Helpers
 	//Jackson (for serializations)
