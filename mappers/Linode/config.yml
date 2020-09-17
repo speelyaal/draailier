@@ -4,3 +4,4 @@ authorizationType: bearerToken
 resources:
   - Location
   - VirtualMachine
+  - VirtualMachineType
