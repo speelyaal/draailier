@@ -5,3 +5,4 @@ resources:
   - Location
   - VirtualMachine
   - VirtualMachineType
+  - OperatingSystemImage

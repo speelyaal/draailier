@@ -1,0 +1,11 @@
+draailierType: OperatingSystemImage
+getAll:
+  method: GET
+  path: /images
+getByReference:
+  method: GET
+  path: /images/{reference}
+
+
+
+
