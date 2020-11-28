@@ -3,7 +3,7 @@ Configutation:
   Properties:
     Property:
       name: log-path
-      value: "logs"
+      value: "/Users/ashok/SpeelYaal/Technology/Workspace/draailier/draailier-spring-boot/logs"
   Appenders:
     Console:
       name: Console_Appender
@@ -36,6 +36,6 @@ Configutation:
         level: debug
         AppenderRef:
           - ref: File_Appender
-            level: info
+            level: debug
           - ref: RollingFile_Appender
-            level: info
+            level: debug
