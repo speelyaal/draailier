@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.expression.ExpressionParser
 import org.springframework.expression.common.TemplateAwareExpressionParser
+import org.springframework.expression.spel.standard.SpelExpressionParser
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
 import javax.script.ScriptEngineManager;
@@ -99,9 +100,9 @@ class ResponseTransformer {
               var actualExpression = jsonKeyOrExpression.replace("@{","").replace("}","")
               actualExpression = actualExpression.replace("<<" + property + ">>", tempVal.toString())
 
-
-              val engine = ScriptEngineManager().getEngineByName("JavaScript")!!
-              finalValue = engine.eval(actualExpression)
+              var expressionParser = SpelExpressionParser();
+              var expression= expressionParser.parseExpression(actualExpression);
+              finalValue = expression.getValue(Any::class.java)!!
 
           }else{
               finalValue = JsonPath.parse(jsonObject).read(jsonKeyOrExpression);
