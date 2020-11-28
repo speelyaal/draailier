@@ -56,6 +56,8 @@ class RestHelper {
             return this.responseTransformer.transformListResponse(cloudProvider, resourceType, result)
         }catch (exception: IllegalArgumentException){
             LOG.error(exception.message)
+            LOG.error("Resource Type is " + resourceType)
+            LOG.error("Cloud Provider is  " + cloudProvider)
             LOG.error("URL is : " + apiUrl + requestMapper?.getAll?.path)
             exception.printStackTrace()
 

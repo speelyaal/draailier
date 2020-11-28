@@ -1,19 +1,18 @@
 
-draailierType: VirtualMachineType
+draailierType: StorageVolume
 
 #When we receive regions/locations as a list/array response where it is located in the response
-listPath: $.server_types[*]
+listPath: $.volumes[*]
+singleInstancePath: $.volume
 
 mapping:
      #Property mapping with Region(class) and jsonPath within the region/location object of Hetzner
      #This Json Path is "within" the each individual resource object. Do not give Json Path from the root of the response.
-
      id: $.id
-     name: $.description
-     vendorReference: $.name
-     description: $.description
-     cores: $.cores
-     memory: "@{<<$.memory>> * 1024 }"
-     disk: "@{<<$.disk>> * 1024}"
-
+     name: $.name
+     vendorReference: $.id
+     description: $.name
+     size: "@{[$.size] * 1024}"
+     createdDateTime: $.created
+     vmVendorReference: server
 

@@ -1,0 +1,26 @@
+draailierType: StorageVolume
+getAll:
+  method: GET
+  path: /volumes
+getByReference:
+  method: GET
+  path: /volumes/{reference}
+create:
+  method: POST
+  path: /volumes
+  body:
+    name: name
+    server: vmVendorReference
+    size: size
+update:
+  method: PUT
+  path: /volumes/{reference}
+delete:
+  method: DELETE
+  path: /volumes/{reference}
+
+
+
+
+
+

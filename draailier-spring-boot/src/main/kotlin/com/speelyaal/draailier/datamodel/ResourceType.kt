@@ -8,5 +8,6 @@ enum class ResourceType {
     SSHKey,
     Network,
     FloatingIP,
+    StorageVolume,
     None
 }

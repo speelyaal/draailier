@@ -11,9 +11,13 @@ import net.minidev.json.JSONArray
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.expression.ExpressionParser
+import org.springframework.expression.common.TemplateAwareExpressionParser
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
-
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 
 @Component
 class ResponseTransformer {
@@ -49,8 +53,9 @@ class ResponseTransformer {
 
                lateinit var tempVal: Any;
                 try {
-                     tempVal = JsonPath.parse(jsonObject).read(property.value);
-                    tmpObject?.setProperty(property.key, tempVal)
+
+
+                    tmpObject?.setProperty(property.key, this.tranformValue(jsonObject, property.value))
 
                 }catch (exception: ClassCastException){
                     LOG.error("Casting error for ${property.key}    - > ${property.value}")
@@ -58,7 +63,6 @@ class ResponseTransformer {
                 }catch (exception: IllegalStateException){
                     LOG.error("Error with property ${property.key} - ${property.value}")
                     LOG.error(exception.message)
-
                 }
 
             }
@@ -72,6 +76,38 @@ class ResponseTransformer {
 
 
         return responseList
+
+    }
+
+    private fun tranformValue(jsonObject: String, jsonKeyOrExpression: String): Any {
+
+                lateinit var finalValue: Any;
+
+          if(jsonKeyOrExpression.startsWith("@{")){
+              /* Given key is an expression, so follow these steps
+               *   1. Take the expression and extract only the json key, for example $.size
+               *   2. Read the value using this from the JSON response
+               *   3. Remove the # and curly brackets {} from the expression
+               *   4. Replace the json key in the expression with the value for example [$.size] with 20
+               *   5. Then evaluate the expression
+               *   6. Return the Value
+               */
+              var property = jsonKeyOrExpression.substring(jsonKeyOrExpression.indexOf("<<")+2, jsonKeyOrExpression.indexOf(">>"))
+
+              var tempVal: Any = JsonPath.parse(jsonObject).read(property);
+
+              var actualExpression = jsonKeyOrExpression.replace("@{","").replace("}","")
+              actualExpression = actualExpression.replace("<<" + property + ">>", tempVal.toString())
+
+
+              val engine = ScriptEngineManager().getEngineByName("JavaScript")!!
+              finalValue = engine.eval(actualExpression)
+
+          }else{
+              finalValue = JsonPath.parse(jsonObject).read(jsonKeyOrExpression);
+          }
+
+        return finalValue
 
     }
 

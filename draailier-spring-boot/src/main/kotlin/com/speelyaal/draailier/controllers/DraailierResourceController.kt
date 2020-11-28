@@ -87,6 +87,7 @@ class DraailierResourceController(var restHelper: RestHelper){
             "floatingips" ->  return ResourceType.FloatingIP
             "virtualmachinetypes" -> return ResourceType.VirtualMachineType
             "osimages" -> return ResourceType.OperatingSystemImage
+            "storagevolumes" -> return ResourceType.StorageVolume
             "locations" ->  return ResourceType.Location
 
         }
